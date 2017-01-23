@@ -16,8 +16,6 @@ public class StringComparer extends Application {
     private String programIcon = ".." + File.separator + ".." + File.separator +
                                  ".." + File.separator + "resources" + File.separator +
                                  "images" + File.separator + "iconyinyang.png";
-    // Заголовок окна
-    private String programTitle = "String Comparer";
 
     private String fxmlMainForm = ".." + File.separator + ".." + File.separator +
                                   ".." + File.separator + "resources" + File.separator +
@@ -44,6 +42,7 @@ public class StringComparer extends Application {
         int minimumWindowWidth = 800;
 
         // Установка заголовка окна
+        String programTitle = "String Comparer";
         primaryStage.setTitle(programTitle);
 
         // Установка размеров главной формы
