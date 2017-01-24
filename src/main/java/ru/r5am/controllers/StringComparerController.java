@@ -1,4 +1,4 @@
-package main.java.ru.r5am.controllers;
+package ru.r5am.controllers;
 
 /**
  * Created by Zoer on 22.01.2017.

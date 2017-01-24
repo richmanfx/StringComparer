@@ -1,4 +1,4 @@
-package main.java.ru.r5am;
+package ru.r5am;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +14,9 @@ public class StringComparer extends Application {
 
     // Иконка
     private String programIcon = ".." + File.separator + ".." + File.separator +
-                                 ".." + File.separator + "resources" + File.separator +
                                  "images" + File.separator + "iconyinyang.png";
 
     private String fxmlMainForm = ".." + File.separator + ".." + File.separator +
-                                  ".." + File.separator + "resources" + File.separator +
                                   "fxml" + File.separator + "StringComparer.fxml";
 
     @Override
@@ -32,6 +30,7 @@ public class StringComparer extends Application {
             root = loader.load(mainFxmlStream);
         } else {
             System.err.println("Couldn't find file: " + fxmlMainForm);
+            System.exit(1);
             return;
         }
 
