@@ -1,0 +1,63 @@
+version =  '1.0.0'      // Будет в имени jar-файла
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'idea'
+
+mainClassName = 'ru.r5am.StringComparer'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+idea {
+    project {
+        languageLevel = '1.8'
+    }
+}
+
+repositories {
+	      mavenLocal()
+	      jcenter()
+          mavenCentral()
+}
+
+buildscript {
+	repositories { jcenter() }
+	dependencies { classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4' }
+}
+
+task wrapper(type: Wrapper) { gradleVersion = '3.3' }
+
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.1.5'
+
+	// Local libraries
+	compile fileTree(dir: 'src/main/resources/library', include: ['*.jar'])
+
+    //    compile 'org.slf4j:slf4j-api:1.7.21'
+    //    testCompile 'junit:junit:4.12'
+}
+
+jar {
+    dependsOn 'copyFiles'
+    baseName = 'StringComparer'
+    manifest {
+      	       attributes("Generated-By": "Gradle",
+        	              "Main-Class": mainClassName,
+		                  "Built-By": "Александр Ящук (Aleksandr Jashhuk), R5AM",
+		                  "Class-Path": "fxml"
+		                 )
+    }
+}
+
+task copyFiles(type: Copy) {
+
+    from('src/main/resources'){                        // Откуда
+        // include '**/*.fxml'
+        // , '**/resources/css/*.css', '**/resources/images/*.png'     // Что
+        exclude 'fxml/', 'css/', 'data/', 'help/', 'images/'
+    }
+
+    into 'build'                                    // Куда
+}
