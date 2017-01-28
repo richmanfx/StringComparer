@@ -1,25 +1,23 @@
-version =  '1.0.0'      // Будет в имени jar-файла
+group 'ru.r5am'
+version '1.0.0'      // Будет в имени jar-файла
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
-apply plugin: 'idea'
+
+defaultTasks 'run'
 
 mainClassName = 'ru.r5am.StringComparer'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
-}
-
-idea {
-    project {
-        languageLevel = '1.8'
-    }
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 repositories {
-	      mavenLocal()
-	      jcenter()
-          mavenCentral()
+    mavenCentral()
+	mavenLocal()
+	jcenter()
 }
 
 buildscript {
