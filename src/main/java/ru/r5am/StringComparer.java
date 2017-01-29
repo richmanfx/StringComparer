@@ -14,7 +14,7 @@ public class StringComparer extends Application {
 
     // Иконка
     private String programIcon = ".." + File.separator + ".." + File.separator +
-                                 "images" + File.separator + "iconyinyang.png";
+                                 "images" + File.separator + "ABC_32x32.png";
 
     private String fxmlMainForm = ".." + File.separator + ".." + File.separator +
                                   "fxml" + File.separator + "StringComparer.fxml";
