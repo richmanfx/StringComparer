@@ -72,7 +72,7 @@ public class StringComparerController {
                 resultLabel.setText("У строк разная длина");
             } else {    // Поиск несовпадающих символов
                 String result = getDifferencePositions(firstString, secondString);
-                resultLabel.setText(String.format("Отличаются символы %s", result));
+                resultLabel.setText(String.format("Отличаются символы: %s", result));
             }
         }
     }

@@ -35,10 +35,10 @@ public class StringComparer extends Application {
         }
 
         // Максимальные и минимальные размеры главного окна
-        int maximumWindowHeight = 370;       // Pixels
+        int maximumWindowHeight = 320;       // Pixels
         int maximumWindowWidth = 1800;
         int minimumWindowHeight = 480;
-        int minimumWindowWidth = 370;
+        int minimumWindowWidth = 320;
 
         // Установка заголовка окна
         String programTitle = "String Comparer";
