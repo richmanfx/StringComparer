@@ -5,29 +5,51 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            styleClass="background" stylesheets="/css/zoer.css" xmlns="http://javafx.com/javafx/8.0.111"
-            fx:controller="ru.r5am.controllers.StringComparerController" xmlns:fx="http://javafx.com/fxml/1"
-            onKeyPressed="#KeyButtonProcessing">
-   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0"
-         AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Сравнение двух строк"/>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#KeyButtonProcessing" prefWidth="600.0" styleClass="background" stylesheets="/css/zoer.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.r5am.controllers.StringComparerController">
+   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Сравнение двух строк" />
       <TextField fx:id="firstTextField" promptText="Первая строка" styleClass="textfield">
          <VBox.margin>
-            <Insets top="30.0"/>
+            <Insets top="30.0" />
          </VBox.margin>
       </TextField>
       <TextField fx:id="secondTextField" promptText="Вторая строка" styleClass="textfield">
          <VBox.margin>
-            <Insets top="20.0"/>
+            <Insets top="20.0" />
          </VBox.margin>
       </TextField>
-      <Button fx:id="compareButton" onAction="#mouseButtonProcessing" mnemonicParsing="false" text="Сравнить">
+      <Label fx:id="resultLabel" alignment="CENTER" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="20.0" />
+         </font>
          <VBox.margin>
-            <Insets top="40.0"/>
+            <Insets top="15.0" />
          </VBox.margin>
-      </Button>
+      </Label>
+       <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+          <Button fx:id="compareButton" alignment="CENTER" mnemonicParsing="false" onAction="#mouseButtonProcessing" text="Сравнить">
+             <VBox.margin>
+                <Insets top="40.0" />
+             </VBox.margin>
+            <HBox.margin>
+               <Insets right="20.0" />
+            </HBox.margin>
+          </Button>
+          <Button fx:id="clearButton" alignment="CENTER" mnemonicParsing="false" onAction="#mouseButtonProcessing" text="Очистить">
+              <VBox.margin>
+                  <Insets top="40.0" />
+              </VBox.margin>
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+          </Button>
+           <HBox.margin>
+               <Insets left="30.0" />
+           </HBox.margin>
+       </HBox>
    </VBox>
 </AnchorPane>

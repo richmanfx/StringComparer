@@ -29,6 +29,10 @@ task wrapper(type: Wrapper) { gradleVersion = '3.3' }
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.1.5'
+    compile 'org.apache.logging.log4j:log4j-slf4j-impl:+'
+    compile 'org.apache.logging.log4j:log4j-core:+'
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:+'
+    compile 'com.fasterxml.jackson.core:jackson-databind:+'
 
 	// Local libraries
 	compile fileTree(dir: 'src/main/resources/library', include: ['*.jar'])
