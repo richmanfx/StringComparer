@@ -36,53 +36,68 @@ public class StringComparerController {
         switch (clickedButton.getId()) {            // По ID определяем конкретную кнопку
             case "compareButton":
                 // Сравниваем строки
-                System.out.println(String.format("Нажата кнопка '%s'.", compareButton.getText()));
+//                System.out.println(String.format("Нажата кнопка '%s'.", compareButton.getText()));
                 actionCompare();
                 break;
 
             case "clearButton":
                 // Очистить текстовые поля ввода
+//                System.out.println(String.format("Нажата кнопка '%s'.", clearButton.getText()));
                 cleanTextFields();
                 break;
         }
     }
 
+    /**
+     * Очищает текстовые поля и строку вывода результата
+     */
     private void cleanTextFields() {
         firstTextField.clear();
         secondTextField.clear();
+        resultLabel.setText("");
     }
 
+    /**
+     * Сравнивает строки, результат выводит на форму.
+     */
     private void actionCompare() {
         String firstString = firstTextField.getText();
         String secondString = secondTextField.getText();
-        System.out.println(String.format("1: %s\n2: %s\n", firstString, secondString));
         if(firstString.equals(secondString)) {
-            System.out.println("Строки одинаковы.");
             resultLabel.setText("Строки одинаковы");
         }
         else {
-            System.out.print("Строки различаются: ");
-            // Поиск несовпадающих символов
-            int len1 = firstString.length();
-            int len2 = secondString.length();
-            if (len1 != len2) {
-                System.out.println("cтроки разной длины.");
-            } else {
-                String result = "";                 // Позиции различающихся символов
-                int differencesCounter = 0;         // Счётчик количества различий в строках
-                for (int i = 0; i < len1; i++) {
-                    if (firstString.charAt(i) != secondString.charAt(i)) {
-                        differencesCounter++;
-                        if (differencesCounter == 1) {  // Первое различие
-                            result += String.format("%d", i + 1);       // Для пользователя нумерация символов с '1'
-                        } else {
-                            result += String.format(", %d", i + 1);
-                        }
-                    }
-                }
-                System.out.println(String.format("различаются символы %s.", result));
+            // Сравнение размера строк
+            if (firstString.length() != secondString.length()) {
+                resultLabel.setText("У строк разная длина");
+            } else {    // Поиск несовпадающих символов
+                String result = getDifferencePositions(firstString, secondString);
+                resultLabel.setText(String.format("Отличаются символы %s", result));
             }
         }
+    }
+
+    /**
+     * Выдаёт строку с позициями различающихся символов.
+     * @param firstString Первыя строка.
+     * @param secondString Вторая строка.
+     * @return Строка с позициями различающихся символов.
+     */
+    private String getDifferencePositions(String firstString, String secondString) {
+        int len1 = firstString.length();
+        String result = "";                 // Позиции различающихся символов
+        int differencesCounter = 0;         // Счётчик количества различий в строках
+        for (int i = 0; i < len1; i++) {
+            if (firstString.charAt(i) != secondString.charAt(i)) {
+                differencesCounter++;
+                if (differencesCounter == 1) {  // Первое различие
+                    result += String.format("%d", i + 1);       // Для пользователя нумерация символов с '1'
+                } else {
+                    result += String.format(", %d", i + 1);
+                }
+            }
+        }
+        return result;
     }
 
 
@@ -91,11 +106,18 @@ public class StringComparerController {
      */
     @FXML
     private void KeyButtonProcessing(KeyEvent keyEvent) {
-        System.out.println("Pressed key: " + keyEvent.getCode());
         switch (keyEvent.getCode()) {
 
             case ESCAPE:
-                actionWindowClose(keyEvent);             // По ESCAPE закрыть окно
+                actionWindowClose(keyEvent);            // По ESCAPE закрыть окно
+                break;
+
+            case ENTER:
+                actionCompare();                        // Сравнить строки
+                break;
+
+            case DELETE:
+                cleanTextFields();                      // Очистить текстовые поля
                 break;
         }
     }
